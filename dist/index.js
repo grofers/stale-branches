@@ -746,7 +746,7 @@ function getBranches(includeProtectedBranches) {
         }
         catch (err) {
             if (err instanceof Error) {
-                core.setFailed(`Failed to retrieve branches for ${get_context_1.repo}. Error: ${err.message}`);
+                core.setFailed(`Failed to retrieve branches for ${get_context_1.repo}, ${get_context_1.owner}. Error: ${err.message}`);
             }
             else {
                 core.setFailed(`Failed to retrieve branches for ${get_context_1.repo}.`);
