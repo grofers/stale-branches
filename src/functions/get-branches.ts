@@ -43,8 +43,10 @@ export async function getBranches(includeProtectedBranches: boolean): Promise<Br
     core.info(logGetBranches(branches.length))
   } catch (err) {
     if (err instanceof Error) {
+      core.error(`Full error object: ${JSON.stringify(err, Object.getOwnPropertyNames(err), 2)}`)
       core.setFailed(`Failed to retrieve branches for ${repo}. Error: ${err.message}`)
     } else {
+      core.error(`Full error object: ${JSON.stringify(err)}`)
       core.setFailed(`Failed to retrieve branches for ${repo}.`)
     }
     branches = [{branchName: '', commmitSha: ''}]

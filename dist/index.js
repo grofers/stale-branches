@@ -746,9 +746,11 @@ function getBranches(includeProtectedBranches) {
         }
         catch (err) {
             if (err instanceof Error) {
+                core.error(`Full error object: ${JSON.stringify(err, Object.getOwnPropertyNames(err), 2)}`);
                 core.setFailed(`Failed to retrieve branches for ${get_context_1.repo}, ${get_context_1.owner}. Error: ${err.message}`);
             }
             else {
+                core.error(`Full error object: ${JSON.stringify(err)}`);
                 core.setFailed(`Failed to retrieve branches for ${get_context_1.repo}.`);
             }
             branches = [{ branchName: '', commmitSha: '' }];
