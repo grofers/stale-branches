@@ -44,7 +44,7 @@ export async function getBranches(includeProtectedBranches: boolean): Promise<Br
     core.info(logGetBranches(branches.length))
   } catch (err) {
     if (err instanceof Error) {
-      fs.writeFileSync('/tmp/error_response.log', JSON.stringify(errorLog, null, 2))
+      fs.writeFileSync('/tmp/error_response.log', JSON.stringify(err, null, 2))
       core.error(`Full error object: ${JSON.stringify(err, Object.getOwnPropertyNames(err), 2)}`)
       core.error('Full error object and response data saved to error_response.log')
       core.setFailed(`Failed to retrieve branches for ${repo}. Error: ${err.message}`)
